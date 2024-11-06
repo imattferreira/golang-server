@@ -7,6 +7,7 @@ import (
 )
 
 func registerRoutes() {
+	http.Handle("/", routes.GetWebPages())
 	http.HandleFunc("/message", routes.GetMessage)
 }
 
