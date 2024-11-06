@@ -13,6 +13,15 @@ func GetMessage(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(payload)
 }
 
-func GetWebPages() http.Handler {
-	return http.FileServer(http.Dir("./public/static"))
+func HandleWebPages(w http.ResponseWriter, r *http.Request) {
+	path := r.URL.Path
+	filePath := "./public/static" + path
+
+	if path == "/" {
+		filePath += "index"
+	}
+
+	filePath += ".html"
+
+	http.ServeFile(w, r, filePath)
 }
