@@ -1,12 +1,16 @@
 package routes
 
 import (
-	"io"
+	"encoding/json"
 	"net/http"
 )
 
 func GetMessage(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, "{ \"message\": \"Hello World!\" }")
+	payload := "{ \"message\": \"Hello World!\" }"
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(payload)
 }
 
 func GetWebPages() http.Handler {
