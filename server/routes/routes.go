@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func GetMessage(w http.ResponseWriter, r *http.Request) {
+func HandleMessage(w http.ResponseWriter, r *http.Request) {
 	payload := "{ \"message\": \"Hello World!\" }"
 
 	w.Header().Set("Content-Type", "application/json")
