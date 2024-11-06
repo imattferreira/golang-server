@@ -8,7 +8,7 @@ import (
 
 func registerRoutes() {
 	http.Handle("/", routes.GetWebPages())
-	http.HandleFunc("/message", routes.GetMessage)
+	http.HandleFunc("/api/message", routes.GetMessage)
 }
 
 func startServer() {
